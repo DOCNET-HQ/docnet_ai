@@ -1,0 +1,96 @@
+{
+  "models": [
+    {
+      "name": "malaria_classifier",
+      "description": "Malaria detection from blood smear images",
+      "version": "1.0",
+      "framework": "tensorflow",
+      "model_path": "malaria_classifier/model.h5",
+      "input_type": "image",
+      "input_shape": [224, 224, 3],
+      "normalize": true,
+      "task_type": "classification",
+      "classes": ["uninfected", "parasitized"],
+      "supports_gradcam": true,
+      "gradcam_layer": "auto",
+      "confidence_threshold": 0.7,
+      "preload": false
+    },
+    {
+      "name": "brain_tumor_classifier",
+      "description": "Brain tumor classification from MRI scans",
+      "version": "1.0",
+      "framework": "tensorflow",
+      "model_path": "brain_tumor/model.h5",
+      "input_type": "image",
+      "input_shape": [224, 224, 3],
+      "normalize": true,
+      "task_type": "classification",
+      "classes": ["glioma", "meningioma", "no_tumor", "pituitary"],
+      "supports_gradcam": true,
+      "gradcam_layer": "auto",
+      "confidence_threshold": 0.75,
+      "preload": false
+    },
+    {
+      "name": "pneumonia_classifier",
+      "description": "Pneumonia detection from chest X-rays",
+      "version": "1.0",
+      "framework": "tensorflow",
+      "model_path": "pneumonia/model.h5",
+      "input_type": "image",
+      "input_shape": [224, 224, 3],
+      "normalize": true,
+      "task_type": "classification",
+      "classes": ["normal", "pneumonia"],
+      "supports_gradcam": true,
+      "gradcam_layer": "auto",
+      "confidence_threshold": 0.8,
+      "preload": false
+    },
+    {
+      "name": "diabetes_predictor",
+      "description": "Diabetes risk prediction from patient data",
+      "version": "1.0",
+      "framework": "sklearn",
+      "model_path": "diabetes/model.pkl",
+      "input_type": "json",
+      "task_type": "classification",
+      "features": [
+        "pregnancies",
+        "glucose",
+        "blood_pressure",
+        "skin_thickness",
+        "insulin",
+        "bmi",
+        "diabetes_pedigree",
+        "age"
+      ],
+      "classes": ["no_diabetes", "diabetes"],
+      "confidence_threshold": 0.6,
+      "preload": false
+    },
+    {
+      "name": "skin_lesion_classifier",
+      "description": "Skin lesion classification for dermatology",
+      "version": "1.0",
+      "framework": "tensorflow",
+      "model_path": "skin_lesion/model.h5",
+      "input_type": "image",
+      "input_shape": [224, 224, 3],
+      "normalize": true,
+      "task_type": "classification",
+      "classes": [
+        "melanoma",
+        "nevus",
+        "seborrheic_keratosis",
+        "basal_cell_carcinoma",
+        "benign"
+      ],
+      "supports_gradcam": true,
+      "gradcam_layer": "auto",
+      "confidence_threshold": 0.7,
+      "preload": false
+    }
+  ]
+}
