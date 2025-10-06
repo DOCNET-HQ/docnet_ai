@@ -1,0 +1,80 @@
+service: medical-ai-models
+
+provider:
+  name: aws
+  runtime: python3.10
+  region: us-east-1
+  stage: ${opt:stage, 'dev'}
+  timeout: 300
+  memorySize: 3008
+  environment:
+    ENVIRONMENT: ${self:provider.stage}
+    MODEL_REGISTRY_PATH: models/model_registry.json
+    MODELS_BASE_PATH: models
+    LOG_LEVEL: INFO
+    ENABLE_GRADCAM: true
+  
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - s3:GetObject
+            - s3:ListBucket
+          Resource:
+            - arn:aws:s3:::${env:S3_BUCKET_NAME}/*
+            - arn:aws:s3:::${env:S3_BUCKET_NAME}
+        - Effect: Allow
+          Action:
+            - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+          Resource: '*'
+
+functions:
+  api:
+    handler: main.handler
+    events:
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors: true
+      - http:
+          path: /
+          method: ANY
+          cors: true
+    layers:
+      - arn:aws:lambda:us-east-1:770693421928:layer:Klayers-p310-pillow:1
+      - arn:aws:lambda:us-east-1:770693421928:layer:Klayers-p310-numpy:1
+
+package:
+  individually: false
+  patterns:
+    - '!.git/**'
+    - '!.pytest_cache/**'
+    - '!tests/**'
+    - '!.venv/**'
+    - '!venv/**'
+    - '!node_modules/**'
+    - '!__pycache__/**'
+    - '!*.pyc'
+    - 'main.py'
+    - 'app/**'
+    - 'models/**'
+    - 'requirements.txt'
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+    layer: false
+    zip: true
+    slim: true
+    strip: false
+    noDeploy:
+      - boto3
+      - botocore
+    useStaticCache: true
+    useDownloadCache: true
