@@ -39,14 +39,14 @@ ENV/
 .env.*.local
 
 # Models (exclude large model files but keep structure)
-models/*.h5
-models/*.pkl
-models/*.pt
-models/*.pth
-models/**/*.h5
-models/**/*.pkl
-models/**/*.pt
-models/**/*.pth
+# models/*.h5
+# models/*.pkl
+# models/*.pt
+# models/*.pth
+# models/**/*.h5
+# models/**/*.pkl
+# models/**/*.pt
+# models/**/*.pth
 
 # Keep model registry
 !models/model_registry.json
