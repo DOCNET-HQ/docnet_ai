@@ -26,7 +26,7 @@ async def readiness_check():
     try:
         model_registry = ModelRegistry()
         available_models = model_registry.get_available_models()
-        
+
         return {
             "status": "ready",
             "timestamp": datetime.utcnow().isoformat(),
