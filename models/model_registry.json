@@ -17,11 +17,12 @@
       "preload": false
     },
     {
+
       "name": "brain_tumor_classifier",
       "description": "Brain tumor classification from MRI scans",
       "version": "1.0",
       "framework": "tensorflow",
-      "model_path": "brain_tumor/model.h5",
+      "model_path": "brain_tumor_multiclass_model.keras",
       "input_type": "image",
       "input_shape": [224, 224, 3],
       "normalize": true,
@@ -75,7 +76,7 @@
       "description": "Skin lesion classification for dermatology",
       "version": "1.0",
       "framework": "tensorflow",
-      "model_path": "skin_lesion/model.h5",
+      "model_path": "./skin_cancer_model.keras",
       "input_type": "image",
       "input_shape": [224, 224, 3],
       "normalize": true,
