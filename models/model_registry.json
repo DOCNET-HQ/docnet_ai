@@ -5,9 +5,9 @@
       "description": "Malaria detection from blood smear images",
       "version": "1.0",
       "framework": "tensorflow",
-      "model_path": "malaria_classifier/model.h5",
+      "model_path": "malaria_mobilenet_model.h5",
       "input_type": "image",
-      "input_shape": [224, 224, 3],
+      "input_shape": [128, 128, 3],
       "normalize": true,
       "task_type": "classification",
       "classes": ["uninfected", "parasitized"],
@@ -17,7 +17,6 @@
       "preload": false
     },
     {
-
       "name": "brain_tumor_classifier",
       "description": "Brain tumor classification from MRI scans",
       "version": "1.0",
