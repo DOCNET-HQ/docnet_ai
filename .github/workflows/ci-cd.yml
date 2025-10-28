@@ -52,7 +52,7 @@ jobs:
         # run: . venv/bin/activate && pytest
       - name: Create archive of dependencies
         run: |
-          cd ./venv/lib/python3.7/site-packages
+          cd ./venv/lib/python3.11/site-packages
           zip -r9 ../../../../app.zip .
       - name: Add files to Zip file
         run: zip -g ../app.zip -r .
