@@ -24,7 +24,7 @@
       "framework": "tensorflow",
       "model_path": "brain_tumor_multiclass_model.keras",
       "input_type": "image",
-      "input_shape": [224, 224, 3],
+      "input_shape": [150, 150, 3],
       "normalize": true,
       "task_type": "classification",
       "classes": ["glioma", "meningioma", "no_tumor", "pituitary"],
