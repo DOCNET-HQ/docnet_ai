@@ -171,6 +171,8 @@ class PredictionService:
             logger.error(f"Image prediction error for {model_name}: {str(e)}")
             raise PredictionError(str(e), model_name)
 
+
+
     def _prepare_json_input(
         self,
         input_data: Dict[str, Any],
